@@ -435,17 +435,16 @@ body { background:rgb(242,241,246); overflow:hidden }
 .note-list > [data-note-type] { cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; pointer-events:auto; position:relative; z-index:2; }
 .note-list > [data-note-type] * { pointer-events:auto; }
 .note-list > [data-note-type]:focus-visible { outline:2px solid #4169e1; outline-offset:3px; }
-.handwrite-screen { position:absolute; inset:0; z-index:60; background:#f1f0f5; opacity:0; visibility:hidden; pointer-events:none; transform:none; transition:none; color:#1a1a1a; overflow:hidden }
-.handwrite-screen::before { content:""; position:absolute; left:0; right:0; top:0; height:96px; z-index:5; pointer-events:none; background:linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,.96) 32%, rgba(255,255,255,.68) 68%, rgba(255,255,255,0) 100%); }
+.handwrite-screen { --handwrite-nav-height:48px; position:absolute; inset:0; z-index:60; background:#f1f0f5; opacity:0; visibility:hidden; pointer-events:none; transform:none; transition:none; color:#1a1a1a; overflow:hidden }
 #note-1[data-handwrite-open="true"] .handwrite-screen { opacity:1; visibility:visible; pointer-events:auto; transform:none; transition:none }
 .handwrite-status { display:none; }
 .handwrite-status-icons { position:absolute; right:24px; top:17px; width:73px; height:12px; display:block; }
 .handwrite-status-icons img,.handwrite-actions img,.handwrite-index img { display:block; width:100%; height:100%; pointer-events:none; user-select:none; }
-.handwrite-nav { position:absolute; left:0; right:0; top:0; height:56px; box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:transparent; border-bottom:0; backdrop-filter:none; -webkit-backdrop-filter:none; z-index:10; }
+.handwrite-nav { position:absolute; left:0; right:0; top:0; height:var(--handwrite-nav-height); box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:linear-gradient(to bottom,#f5f5f8,#fff) top / 100% 66.6667% no-repeat #fff; border-bottom:0; backdrop-filter:none; -webkit-backdrop-filter:none; z-index:10; }
 .handwrite-nav button,.handwrite-index { border:0; padding:0; background:transparent; appearance:none; cursor:pointer; color:#404040; }
 .handwrite-back { width:24px; height:24px; position:relative }
 .handwrite-back::before { content:""; position:absolute; left:6px; top:4px; width:12px; height:12px; border-left:2px solid #404040; border-bottom:2px solid #404040; transform:rotate(45deg) }
-.handwrite-actions { position:absolute; right:14px; top:10px; display:flex; align-items:flex-end; gap:13px; }
+.handwrite-actions { position:absolute; right:14px; top:calc(50% - 18px); display:flex; align-items:flex-end; gap:13px; }
 .handwrite-actions button { width:24px; height:24px; flex:0 0 24px; }
 /* Keep the toolbar icons vector-like and transparent over the gray toolbar. */
 .handwrite-actions img { display:none; }
@@ -457,7 +456,7 @@ body { background:rgb(242,241,246); overflow:hidden }
 .handwrite-more { width:20px !important; height:20px !important; position:relative; border:1.5px solid #444 !important; border-radius:50%; font:700 12px/13px -apple-system,BlinkMacSystemFont,sans-serif; letter-spacing:1px; }
 .handwrite-more::before { content:"•••"; position:absolute; left:2px; top:2px; color:#444; font:700 12px/13px -apple-system,BlinkMacSystemFont,sans-serif; letter-spacing:1px; }
 .handwrite-index { position:absolute; left:24px; top:159px; width:15px; height:15px; z-index:2; }
-.paper-viewport { position:absolute; inset:0; padding-top:56px; box-sizing:border-box; overflow:auto; overflow-anchor:none; overscroll-behavior:contain; scrollbar-width:none; -webkit-overflow-scrolling:touch; background:#f1f0f5; touch-action:pan-x pan-y; }
+.paper-viewport { position:absolute; inset:0; padding-top:var(--handwrite-nav-height); box-sizing:border-box; overflow:auto; overflow-anchor:none; overscroll-behavior:contain; scrollbar-width:none; -webkit-overflow-scrolling:touch; background:#f1f0f5; touch-action:pan-x pan-y; }
 .paper-viewport::-webkit-scrollbar { display:none; }
 .paper-canvas { position:relative; width:794px; min-height:1123px; margin:0 auto; padding:14px 24px 120px; background:#fff; box-shadow:0 2px 4px rgba(35,36,42,.16),0 5px 9px rgba(35,36,42,.07); transition:box-shadow 160ms ease; }
 .paper-canvas::before { display:none; }
@@ -481,7 +480,7 @@ body { background:rgb(242,241,246); overflow:hidden }
 .heading-level-option[data-level="body"] .heading-level-preview { font:400 16px/22px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
 .heading-level-option .heading-level-check { margin-left:auto; color:#4169e1; font:600 16px/20px -apple-system,BlinkMacSystemFont,sans-serif; opacity:0; }
 .heading-level-option[aria-checked="true"] .heading-level-check { opacity:1; }
-.paper-editor { width:554px; min-height:975px; padding:34px 120px 0; outline:none; border:0; color:#202020; caret-color:#4169e1; font:18px/1.72 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; white-space:pre-wrap; overflow-wrap:normal; -webkit-user-select:text; user-select:text; }
+.paper-editor { width:100%; min-height:975px; padding:34px 120px 0; outline:none; border:0; color:#202020; caret-color:#4169e1; font:18px/1.72 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; white-space:pre-wrap; overflow-wrap:normal; -webkit-user-select:text; user-select:text; }
 .paper-editor::first-line { font:600 calc(22em / 18)/1.4 "PingFang SC",sans-serif; }
 .paper-editor[data-heading-level="title"]::first-line { font:700 calc(30em / 18)/1.3 "PingFang SC",sans-serif; }
 .paper-editor[data-heading-level="subtitle"]::first-line { font:600 calc(24em / 18)/1.4 "PingFang SC",sans-serif; }
@@ -1852,7 +1851,7 @@ body { background:rgb(242,241,246); overflow:hidden }
     const overlayBounds=headingOverlay.getBoundingClientRect();
     const card=headingOverlay.querySelector('.heading-level-card');
     const gap=12;
-    const preferredLeft=anchor.right-overlayBounds.left+24;
+    const preferredLeft=anchor.left-overlayBounds.left;
     const left=Math.max(8,Math.min(preferredLeft,overlayBounds.width-card.offsetWidth-8));
     const top=Math.max(8,Math.min(anchor.bottom-overlayBounds.top+gap,overlayBounds.height-card.offsetHeight-8));
     card.style.left=`${left}px`;
@@ -1889,7 +1888,7 @@ body { background:rgb(242,241,246); overflow:hidden }
   });
   paperViewport.addEventListener('scroll',positionHeadingMenu,{passive:true});
   window.addEventListener('resize',positionHeadingMenu,{passive:true});
-  const paperBase={width:794,height:1123,paddingX:24,paddingTop:14,paddingBottom:120,editorWidth:554,editorHeight:975,fontSize:18};
+  const paperBase={width:794,height:1123,paddingX:24,paddingTop:14,paddingBottom:120,editorHeight:975,fontSize:18};
   let currentDraftCard=null;
   let currentDraftText='';
   const localDateParts=date=>{
@@ -2074,9 +2073,7 @@ body { background:rgb(242,241,246); overflow:hidden }
     paperIndex.style.height=(15*zoom)+'px';
     paperIndex.style.left=(24*zoom)+'px';
     paperIndex.style.top=(56*zoom)+'px';
-    // Keep the editor's paper-space width fixed so zooming scales the page
-    // without changing line breaks or moving text to a different position.
-    paperEditor.style.width=(paperBase.editorWidth*zoom)+'px';
+    // The editor fills the paper's inner width, so its side margins scale evenly.
     paperEditor.style.minHeight=(paperBase.editorHeight*zoom)+'px';
     paperEditor.style.paddingTop=(34*zoom)+'px';
     paperEditor.style.paddingRight=(120*zoom)+'px';
