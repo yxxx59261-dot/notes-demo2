@@ -51,11 +51,11 @@
 .n1-icon-8 { width: 20px; height: 20px; color: rgb(158, 134, 205); flex-shrink: 0; }
 .n1-summary-3 { color: rgb(112, 112, 112); font-size: 14px; font-family: "PingFang SC"; line-height: 20px; width: 100%; flex: 0 0 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .n1-icon-9 { width: 20px; height: 20px; color: rgb(126, 168, 155); flex-shrink: 0; }
-.n1-tabs-1 { width: 100%; height: calc(48px + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(48px + env(safe-area-inset-bottom)); z-index: 12; transform:none; }
-.n1-layer-10 { position: absolute; left: 0%; right: 0%; top: 48px; bottom: 0; height: env(safe-area-inset-bottom); background: #FFFFFF; z-index: 0; overflow: hidden }
+.n1-tabs-1 { --tabs-content-height: 52px; width: 100%; height: calc(var(--tabs-content-height) + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(var(--tabs-content-height) + env(safe-area-inset-bottom)); z-index: 12; transform:none; }
+.n1-layer-10 { position: absolute; left: 0%; right: 0%; top: var(--tabs-content-height); bottom: 0; height: env(safe-area-inset-bottom); background: #FFFFFF; z-index: 0; overflow: hidden }
 .n1-layer-10 img { display: none }
 .n1-icon-10 { color: #FFFFFF }
-.n1-surface-2 { width: 375px; height: 48px; background: #FFFFFF; border-style: solid; border-color: #E6E6E6; border-top-width: 0.5px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; position: absolute; left: 0%; right: 0%; top: 0; bottom: auto; z-index: 1 }
+.n1-surface-2 { width: 375px; height: var(--tabs-content-height); background: #FFFFFF; border-style: solid; border-color: #E6E6E6; border-top-width: 0.5px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; position: absolute; left: 0%; right: 0%; top: 0; bottom: auto; z-index: 1 }
 .n1-layer-11 { width: 20px; height: 36px; position: absolute; left: 36px; top: 12px; z-index: 2 }
 .n1-text-6 { color: #4169E1; font-size: 10px; font-family: PingFang SC; font-weight: 500; line-height: 14px; position: absolute; left: 0%; right: 0%; top: 61.11%; bottom: 0%; z-index: 0 }
 .n1-layer-12 { position: absolute; left: 0%; right: 0%; top: 0px; z-index: 1 }
@@ -272,6 +272,8 @@ body { background:rgb(242,241,246); overflow:hidden }
 [data-menu-open="true"] .all-notes-trigger > img { transform:rotate(180deg) }
 .menu-dismiss { position:absolute; inset:44px 0 0; z-index:39; visibility:hidden; pointer-events:none; touch-action:manipulation }
 [data-menu-open="true"] .menu-dismiss { visibility:visible; pointer-events:auto }
+[data-menu-open="true"] .note-list > [data-note-type],
+[data-menu-open="true"] .note-list > [data-note-type] * { pointer-events:none; }
 .notes-menu { z-index:40; width:220px; height:208px; box-sizing:border-box; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-10px) scale(.88); filter:blur(1.5px); transform-origin:50% 0; will-change:transform,opacity; transition:opacity 170ms ease,transform 210ms cubic-bezier(.4,0,.2,1),filter 170ms ease,visibility 0s 220ms; background:#fff; border:1px solid #DFDFDF; box-shadow:0 4px 22px 0 rgba(147,147,147,.3); -webkit-tap-highlight-color:transparent }
 [data-menu-open="true"] .notes-menu { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0) scale(1); filter:blur(0); transition:opacity 130ms ease-out,transform 460ms cubic-bezier(.16,1.55,.32,1),filter 150ms ease-out,visibility 0s }
 .menu-item { border:0; margin:0; color:inherit; text-align:left; background:transparent; appearance:none; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:background-color 140ms ease }
@@ -458,11 +460,11 @@ body { background:rgb(242,241,246); overflow:hidden }
 .handwrite-index { position:absolute; left:24px; top:159px; width:15px; height:15px; z-index:2; }
 .paper-viewport { position:absolute; inset:0; padding-top:var(--handwrite-nav-height); box-sizing:border-box; overflow:auto; overflow-anchor:none; overscroll-behavior:contain; scrollbar-width:none; -webkit-overflow-scrolling:touch; background:#f1f0f5; touch-action:pan-x pan-y; }
 .paper-viewport::-webkit-scrollbar { display:none; }
-.paper-canvas { position:relative; width:794px; min-height:1123px; margin:0 auto; padding:14px 24px 120px; background:#fff; box-shadow:0 2px 4px rgba(35,36,42,.16),0 5px 9px rgba(35,36,42,.07); transition:box-shadow 160ms ease; }
+.paper-canvas { position:relative; width:794px; min-height:1123px; margin:0 auto; padding:14px 0 120px; background:#fff; box-shadow:0 2px 4px rgba(35,36,42,.16),0 5px 9px rgba(35,36,42,.07); transition:box-shadow 160ms ease; }
 .paper-canvas::before { display:none; }
 .paper-canvas.is-pulled { box-shadow:0 2px 4px rgba(35,36,42,.18),0 6px 10px rgba(35,36,42,.08); }
 .paper-canvas.is-pulled::before { display:none; }
-.paper-index { position:absolute; left:24px; top:56px; width:15px; height:15px; z-index:5; border:0; padding:0; background:transparent; appearance:none; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+.paper-index { position:absolute; left:124px; top:56px; width:15px; height:15px; z-index:5; border:0; padding:0; background:transparent; appearance:none; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
 .paper-index::before { content:""; position:absolute; left:-14px; top:-14px; width:43px; height:43px; border-radius:12px; }
 .paper-index img { display:block; width:100%; height:100%; pointer-events:none; user-select:none; }
 .heading-level-overlay { position:absolute; inset:0; z-index:24; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 150ms ease,visibility 0s 150ms; }
@@ -480,7 +482,7 @@ body { background:rgb(242,241,246); overflow:hidden }
 .heading-level-option[data-level="body"] .heading-level-preview { font:400 16px/22px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
 .heading-level-option .heading-level-check { margin-left:auto; color:#4169e1; font:600 16px/20px -apple-system,BlinkMacSystemFont,sans-serif; opacity:0; }
 .heading-level-option[aria-checked="true"] .heading-level-check { opacity:1; }
-.paper-editor { width:100%; min-height:975px; padding:34px 120px 0; outline:none; border:0; color:#202020; caret-color:#4169e1; font:18px/1.72 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; white-space:pre-wrap; overflow-wrap:normal; -webkit-user-select:text; user-select:text; }
+.paper-editor { width:100%; min-height:975px; padding:34px 50px 0; outline:none; border:0; color:#202020; caret-color:#4169e1; font:18px/1.72 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; white-space:pre-wrap; overflow-wrap:break-word; -webkit-user-select:text; user-select:text; }
 .paper-editor::first-line { font:600 calc(22em / 18)/1.4 "PingFang SC",sans-serif; }
 .paper-editor[data-heading-level="title"]::first-line { font:700 calc(30em / 18)/1.3 "PingFang SC",sans-serif; }
 .paper-editor[data-heading-level="subtitle"]::first-line { font:600 calc(24em / 18)/1.4 "PingFang SC",sans-serif; }
@@ -1850,10 +1852,10 @@ body { background:rgb(242,241,246); overflow:hidden }
     const anchor=paperIndex.getBoundingClientRect();
     const overlayBounds=headingOverlay.getBoundingClientRect();
     const card=headingOverlay.querySelector('.heading-level-card');
-    const gap=12;
-    const preferredLeft=anchor.left-overlayBounds.left;
-    const left=Math.max(8,Math.min(preferredLeft,overlayBounds.width-card.offsetWidth-8));
-    const top=Math.max(8,Math.min(anchor.bottom-overlayBounds.top+gap,overlayBounds.height-card.offsetHeight-8));
+    // Keep the popover anchored to the icon itself: its top-left corner
+    // covers the icon top-left corner as the paper moves or zooms.
+    const left=anchor.left-overlayBounds.left;
+    const top=anchor.top-overlayBounds.top;
     card.style.left=`${left}px`;
     card.style.top=`${top}px`;
   };
@@ -1888,7 +1890,7 @@ body { background:rgb(242,241,246); overflow:hidden }
   });
   paperViewport.addEventListener('scroll',positionHeadingMenu,{passive:true});
   window.addEventListener('resize',positionHeadingMenu,{passive:true});
-  const paperBase={width:794,height:1123,paddingX:24,paddingTop:14,paddingBottom:120,editorHeight:975,fontSize:18};
+  const paperBase={width:794,height:1123,textMargin:50,paddingTop:14,paddingBottom:120,editorHeight:975,fontSize:18};
   let currentDraftCard=null;
   let currentDraftText='';
   const localDateParts=date=>{
@@ -2039,6 +2041,11 @@ body { background:rgb(242,241,246); overflow:hidden }
   let paperFitted=false;
   let gestureStartZoom=1;
   let paperZoomAnimationFrame=0;
+  const layoutPaperEditor=(zoom,scale)=>{
+    // Keep the requested edge spacing at the default zoom in the scaled demo frame.
+    paperEditor.style.paddingInline=(paperBase.textMargin*zoom/scale)+'px';
+    paperEditor.style.maxWidth=(paperViewport.clientWidth*Math.max(1,zoom))+'px';
+  };
   const setPaperZoom=(next,clientX,clientY)=>{
     const width=paperViewport.clientWidth;
     const height=paperViewport.clientHeight;
@@ -2053,11 +2060,12 @@ body { background:rgb(242,241,246); overflow:hidden }
     const minZoom=Math.min(1,(width-2*sideGap)/paperBase.width);
     const zoom=Math.max(minZoom,Math.min(2.2,next));
     paperFitted=next<=minZoom;
+    const bounds=paperViewport.getBoundingClientRect();
+    const scaleX=bounds.width/width||1;
+    layoutPaperEditor(zoom,scaleX);
     const reveal=Math.max(0,(fillWidthZoom-zoom)/(fillWidthZoom-minZoom));
     const top=topGap*reveal;
     if(zoom===paperZoom&&paperCanvas.style.marginTop===top+'px'&&!paperFitted)return;
-    const bounds=paperViewport.getBoundingClientRect();
-    const scaleX=bounds.width/width||1;
     const scaleY=bounds.height/height||1;
     const anchorX=clientX==null?width/2:(clientX-bounds.left)/scaleX;
     const anchorY=clientY==null?height/2:(clientY-bounds.top)/scaleY;
@@ -2068,16 +2076,13 @@ body { background:rgb(242,241,246); overflow:hidden }
     paperCanvas.style.width=(paperBase.width*zoom)+'px';
     paperCanvas.style.minHeight=(paperBase.height*zoom)+'px';
     paperCanvas.style.marginTop=top+'px';
-    paperCanvas.style.padding=`${paperBase.paddingTop*zoom}px ${paperBase.paddingX*zoom}px ${paperBase.paddingBottom*zoom}px`;
+    paperCanvas.style.padding=`${paperBase.paddingTop*zoom}px 0 ${paperBase.paddingBottom*zoom}px`;
     paperIndex.style.width=(15*zoom)+'px';
     paperIndex.style.height=(15*zoom)+'px';
     paperIndex.style.left=(24*zoom)+'px';
     paperIndex.style.top=(56*zoom)+'px';
-    // The editor fills the paper's inner width, so its side margins scale evenly.
     paperEditor.style.minHeight=(paperBase.editorHeight*zoom)+'px';
     paperEditor.style.paddingTop=(34*zoom)+'px';
-    paperEditor.style.paddingRight=(120*zoom)+'px';
-    paperEditor.style.paddingLeft=(120*zoom)+'px';
     paperEditor.style.fontSize=(paperBase.fontSize*zoom)+'px';
     if(headingMenuOpen)requestAnimationFrame(positionHeadingMenu);
     if(paperFitted){
@@ -2318,20 +2323,19 @@ body { background:rgb(242,241,246); overflow:hidden }
   addTrigger.addEventListener('keydown',e=>{
     if(e.key==='Enter'||e.key===' '){e.preventDefault();openHandwrite(true)}
   });
+  const noteListBlocked=()=>app.dataset.menuOpen==='true'||app.dataset.filterOpen==='true'||
+    app.dataset.sidebarOpen==='true'||app.dataset.handwriteOpen==='true';
   const openNoteCard=card=>{
-    if(!card||app.dataset.handwriteOpen==='true')return;
+    if(!card||noteListBlocked())return;
     openHandwrite(true,card);
   };
   const cardFromEventTarget=target=>{
     const card=target?.closest?.('[data-note-type]');
     return card&&card.parentElement===noteList?card:null;
   };
-  const cardFromPoint=(x,y,target=null)=>{
-    const direct=cardFromEventTarget(target);
-    if(direct)return direct;
-    if(!Number.isFinite(x)||!Number.isFinite(y))return null;
-    const stack=document.elementsFromPoint?.(x,y)||[];
-    return stack.map(node=>cardFromEventTarget(node)).find(Boolean)||null;
+  const cardFromPoint=(x,y)=>{
+    if(noteListBlocked()||!Number.isFinite(x)||!Number.isFinite(y))return null;
+    return cardFromEventTarget(document.elementFromPoint(x,y));
   };
   document.addEventListener('click',event=>{
     const card=cardFromEventTarget(event.target);
@@ -2376,20 +2380,18 @@ body { background:rgb(242,241,246); overflow:hidden }
     }
   },{passive:false});
   noteList.addEventListener('touchcancel',()=>{noteTouchStart=null},{passive:true});
-  // Mobile browsers may retarget a tap to an inner image or to a transparent
-  // composited layer. Resolve the card from the actual contact point so every
-  // part of the card opens the note, including its padding and icon area.
+  // Resolve mobile taps from the visible element at the contact point.
   let globalPointerStart=null;
   document.addEventListener('pointerdown',event=>{
     if(event.pointerType!=='touch'&&event.pointerType!=='pen')return;
-    const card=cardFromPoint(event.clientX,event.clientY,event.target);
+    const card=cardFromPoint(event.clientX,event.clientY);
     globalPointerStart=card?{card,x:event.clientX,y:event.clientY}:null;
   },true);
   document.addEventListener('pointerup',event=>{
     if(event.pointerType!=='touch'&&event.pointerType!=='pen')return;
     const start=globalPointerStart;
     globalPointerStart=null;
-    if(!start||!start.card?.isConnected||start.card.parentElement!==noteList||Math.hypot(event.clientX-start.x,event.clientY-start.y)>=10||app.dataset.handwriteOpen==='true')return;
+    if(!start||Math.hypot(event.clientX-start.x,event.clientY-start.y)>=10||cardFromPoint(event.clientX,event.clientY)!==start.card)return;
     if(event.cancelable)event.preventDefault();
     openNoteCard(start.card);
   },true);
@@ -2397,7 +2399,7 @@ body { background:rgb(242,241,246); overflow:hidden }
   let globalTouchTimer=0;
   document.addEventListener('touchstart',event=>{
     const touch=event.touches?.[0];
-    const card=touch?cardFromPoint(touch.clientX,touch.clientY,event.target):null;
+    const card=touch?cardFromPoint(touch.clientX,touch.clientY):null;
     globalTouchStart=touch&&card?{card,x:touch.clientX,y:touch.clientY}:null;
     if(globalTouchTimer)clearTimeout(globalTouchTimer);
     if(globalTouchStart){
@@ -2424,7 +2426,7 @@ body { background:rgb(242,241,246); overflow:hidden }
     globalTouchTimer=0;
     globalTouchStart=null;
     if(!touch||!start)return;
-    if(!start.card?.isConnected||start.card.parentElement!==noteList||Math.hypot(touch.clientX-start.x,touch.clientY-start.y)>=10||app.dataset.handwriteOpen==='true')return;
+    if(Math.hypot(touch.clientX-start.x,touch.clientY-start.y)>=10||cardFromPoint(touch.clientX,touch.clientY)!==start.card)return;
     if(event.cancelable)event.preventDefault();
     openNoteCard(start.card);
   },{capture:true,passive:false});
@@ -2585,7 +2587,8 @@ body { background:rgb(242,241,246); overflow:hidden }
     updateChoices();
     updateNotes();
   }));
-  dismiss.addEventListener('pointerdown',()=>setOpen(false,{restore:document.activeElement!==document.body}));
+  dismiss.addEventListener('pointerdown',event=>{ event.stopPropagation(); });
+  dismiss.addEventListener('click',event=>{ event.preventDefault(); event.stopPropagation(); setOpen(false,{restore:document.activeElement!==document.body}); });
   document.addEventListener('keydown',e=>{
     if(!isOpen)return;
     if(isFilterOpen&&e.key==='Escape'){
@@ -2626,6 +2629,7 @@ body { background:rgb(242,241,246); overflow:hidden }
     handwriteScreen.style.insetInline=(Math.max(0,375-viewportWidth/scale)/2)+'px';
     handwriteScreen.style.bottom='0px';
     if(paperFitted)setPaperZoom(0);
+    else layoutPaperEditor(paperZoom,scale);
     const tabs=app.querySelector('.n1-tabs-1');
     const tabsHeight=tabs ? tabs.offsetHeight : 48;
     const add=app.querySelector('[data-name="添加"]');add.style.top=(height-tabsHeight-79)+'px';add.style.bottom='auto';
