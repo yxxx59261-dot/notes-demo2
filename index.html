@@ -25,13 +25,17 @@
 .n1-icon-3 { width: 16px; height: 16px; color: #A8A8A8 }
 .n1-icon-4 { width: 22px; height: 22px; color: #666666 }
 .n1-navigation-1 > #home-sidebar-trigger,
-.n1-navigation-1 > .n1-icon-2 { position:absolute; left:0; top:1px; }
-.n1-navigation-1 > .all-notes-title { position:absolute; left:38px; top:0; height:24px; display:flex; align-items:center; }
-.n1-navigation-1 > .n1-icon-4 { position:absolute; right:38px; top:1px; }
-.more-notes-trigger { position:absolute; right:0; top:1px; width:22px; height:22px; border:0; padding:0; background:transparent; appearance:none; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.n1-navigation-1 > .n1-icon-2 { position:absolute; left:0; top:50%; transform:translateY(-50%); }
+.n1-navigation-1 > .all-notes-title { position:absolute; left:38px; top:50%; height:24px; display:flex; align-items:center; transform:translateY(-50%); }
+.home-nav-title-group { position:absolute; left:0; top:50%; display:flex; align-items:center; gap:16px; transform:translateY(-50%); }
+.home-nav-title-group > #home-sidebar-trigger { position:relative; left:auto; top:auto; transform:none; }
+.home-nav-title-group > .all-notes-title { position:static; left:auto; top:auto; transform:none; }
+.n1-navigation-1 > .n1-icon-4 { position:absolute; right:38px; top:50%; transform:translateY(-50%); }
+.more-notes-trigger { position:absolute; right:0; top:50%; width:22px; height:22px; border:0; padding:0; background:transparent; appearance:none; cursor:pointer; -webkit-tap-highlight-color:transparent; transform:translateY(-50%); transition:opacity 180ms ease 40ms, transform 260ms cubic-bezier(.22,.8,.25,1), visibility 0s linear 260ms; }
 .more-notes-trigger::before { content:""; position:absolute; left:2px; top:9px; width:4px; height:4px; border-radius:50%; background:#666; box-shadow:7px 0 #666,14px 0 #666; }
-.more-notes-trigger:active { transform:scale(.94); }
+.more-notes-trigger:active { transform:translateY(-50%) scale(.94); }
 .more-notes-trigger:focus-visible { outline:2px solid #4169e1; outline-offset:4px; border-radius:6px; }
+[data-menu-open="true"] .more-notes-trigger { opacity:0; visibility:hidden; pointer-events:none; transform:translateY(-50%) scale(.72); }
 .n1-list-1 { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0px; padding: 18px 15px 0px; overflow: hidden; margin-bottom: 0; }
 .n1-text-2 { color: rgb(153, 153, 153); font-size: 14px; font-family: "PingFang SC"; line-height: 20px; flex: 0 0 20px; margin-top: 0px; margin-bottom: 22px; }
 .n1-card-1 { width: 100%; height: 96px; position: relative; display: flex; flex-direction: column; padding: 11px 16px 12px; flex: 0 0 96px; margin-top: 0px; }
@@ -51,7 +55,7 @@
 .n1-icon-8 { width: 20px; height: 20px; color: rgb(158, 134, 205); flex-shrink: 0; }
 .n1-summary-3 { color: rgb(112, 112, 112); font-size: 14px; font-family: "PingFang SC"; line-height: 20px; width: 100%; flex: 0 0 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .n1-icon-9 { width: 20px; height: 20px; color: rgb(126, 168, 155); flex-shrink: 0; }
-.n1-tabs-1 { --tabs-content-height: 52px; width: 100%; height: calc(var(--tabs-content-height) + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(var(--tabs-content-height) + env(safe-area-inset-bottom)); z-index: 12; transform:none; }
+.n1-tabs-1 { --tabs-content-height: 52px; width: 100%; height: calc(var(--tabs-content-height) + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(var(--tabs-content-height) + env(safe-area-inset-bottom)); margin-bottom:20px; z-index: 12; transform:none; }
 .n1-layer-10 { position: absolute; left: 0%; right: 0%; top: var(--tabs-content-height); bottom: 0; height: env(safe-area-inset-bottom); background: #FFFFFF; z-index: 0; overflow: hidden }
 .n1-layer-10 img { display: none }
 .n1-icon-10 { color: #FFFFFF }
@@ -69,7 +73,7 @@
 .n1-layer-17 { position: absolute; left: -6.25%; right: -3.5%; top: 6.25%; bottom: 6.25%; z-index: 1 }
 .n1-layer-18 { width: 20px; height: 36px; position: absolute; left: 319px; top: 12px; z-index: 6 }
 .n1-layer-19 { position: absolute; left: 0px; top: 44px; z-index: 0 }
-.n1-layer-20 { position: absolute; left: 296px; top: 645px; z-index: 11 }
+.n1-layer-20 { width:74px; height:74px; position: absolute; left: 296px; top: 645px; z-index: 11; border:0; background:linear-gradient(#fff,#fff) 50% calc(50% - 3px) / 18px 1.5px no-repeat,linear-gradient(#fff,#fff) 50% calc(50% - 3px) / 1.5px 18px no-repeat,radial-gradient(circle at 50% calc(50% - 3px),#4169E1 0 25.5px,transparent 26px); filter:drop-shadow(0 4px 4px rgba(65,105,225,.2)); }
 .n1-surface-3 { display: none; }
 .n2-screen-1 { width: 375px; height: 812px; background: rgb(242, 241, 246); overflow: hidden; position: relative; display: flex; flex-direction: column; flex: 0 0 375px; }
 .n2-status-1 { width: 100%; height: 44px; position: relative; flex: 0 0 44px; }
@@ -104,7 +108,7 @@
 .n2-icon-8 { width: 20px; height: 20px; color: rgb(158, 134, 205); flex-shrink: 0; }
 .n2-summary-3 { color: rgb(112, 112, 112); font-size: 14px; font-family: "PingFang SC"; line-height: 20px; width: 100%; flex: 0 0 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .n2-icon-9 { width: 20px; height: 20px; color: rgb(126, 168, 155); flex-shrink: 0; }
-.n2-tabs-1 { width: 100%; height: calc(48px + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(48px + env(safe-area-inset-bottom)); z-index: 12; }
+.n2-tabs-1 { width: 100%; height: calc(48px + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(48px + env(safe-area-inset-bottom)); margin-bottom:20px; z-index: 12; }
 .n2-layer-10 { position: absolute; left: 0%; right: 0%; top: 48px; bottom: 0; height: env(safe-area-inset-bottom); background: #FFFFFF; z-index: 0; overflow: hidden }
 .n2-layer-10 img { display: none }
 .n2-icon-10 { color: #FFFFFF }
@@ -180,7 +184,7 @@
 .n3-icon-8 { width: 20px; height: 20px; color: rgb(158, 134, 205); flex-shrink: 0; }
 .n3-summary-3 { color: rgb(112, 112, 112); font-size: 14px; font-family: "PingFang SC"; line-height: 20px; width: 100%; flex: 0 0 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .n3-icon-9 { width: 20px; height: 20px; color: rgb(126, 168, 155); flex-shrink: 0; }
-.n3-tabs-1 { width: 100%; height: calc(48px + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(48px + env(safe-area-inset-bottom)); z-index: 12; }
+.n3-tabs-1 { width: 100%; height: calc(48px + env(safe-area-inset-bottom)); position: relative; flex: 0 0 calc(48px + env(safe-area-inset-bottom)); margin-bottom:20px; z-index: 12; }
 .n3-layer-10 { position: absolute; left: 0%; right: 0%; top: 48px; bottom: 0; height: env(safe-area-inset-bottom); background: #FFFFFF; z-index: 0; overflow: hidden }
 .n3-layer-10 img { display: none }
 .n3-icon-10 { color: #FFFFFF }
@@ -261,7 +265,7 @@ body { background:rgb(242,241,246); overflow:hidden }
 .device { width:375px; height:812px; flex:none; position:relative }
 .device > .note-screen { transform-origin:top left; border-radius:0; box-shadow:none }
 .note-list { position:relative; z-index:1; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:none; touch-action:manipulation; -webkit-overflow-scrolling:touch; }
-.n1-screen-1::after { display:none }
+.n1-screen-1::after { content:""; display:block; position:absolute; left:0; right:0; bottom:0; height:20px; background:#fff; z-index:13; pointer-events:none; }
 .note-list::-webkit-scrollbar { display:none }
 .note-screen > [data-name="导航栏"] { pointer-events:none }
 .note-screen img { display:block }
@@ -433,19 +437,24 @@ body { background:rgb(242,241,246); overflow:hidden }
 .type-filter-card > .n3-layer-36 { left:19px; top:22px; width:184px; height:24px; cursor:pointer; pointer-events:auto }
 .type-filter-card > .n3-layer-36 > .n3-layer-37 { left:auto; right:0; top:4px; bottom:auto; width:16px; height:16px; }
 .n1-layer-20 { cursor:pointer; -webkit-tap-highlight-color:transparent; transition:transform 180ms ease,filter 180ms ease }
-.n1-layer-20:active { transform:scale(.94); filter:brightness(.96) }
+.n1-layer-20 > img { display:none; }
+.n1-layer-20::before,
+.n1-layer-20::after { content:none; }
+.n1-layer-20:active { transform:scale(.94); filter:drop-shadow(0 4px 4px rgba(65,105,225,.2)) brightness(.96) }
 .note-list > [data-note-type] { cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; pointer-events:auto; position:relative; z-index:2; }
 .note-list > [data-note-type] * { pointer-events:auto; }
 .note-list > [data-note-type]:focus-visible { outline:2px solid #4169e1; outline-offset:3px; }
 .handwrite-screen { --handwrite-nav-height:48px; position:absolute; inset:0; z-index:60; background:#f1f0f5; opacity:0; visibility:hidden; pointer-events:none; transform:none; transition:none; color:#1a1a1a; overflow:hidden }
 #note-1[data-handwrite-open="true"] .handwrite-screen { opacity:1; visibility:visible; pointer-events:auto; transform:none; transition:none }
+.handwrite-screen[data-keyboard-open="true"] { background:#fff; }
 .handwrite-status { display:none; }
 .handwrite-status-icons { position:absolute; right:24px; top:17px; width:73px; height:12px; display:block; }
 .handwrite-status-icons img,.handwrite-actions img,.handwrite-index img { display:block; width:100%; height:100%; pointer-events:none; user-select:none; }
-.handwrite-nav { position:absolute; left:0; right:0; top:0; height:var(--handwrite-nav-height); box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:linear-gradient(to bottom,#f5f5f8,#fff) top / 100% 66.6667% no-repeat #fff; border-bottom:0; backdrop-filter:none; -webkit-backdrop-filter:none; z-index:10; }
+.handwrite-nav { position:absolute; left:0; right:0; top:0; height:var(--handwrite-nav-height); box-sizing:border-box; display:flex; align-items:center; justify-content:space-between; padding:0 16px; background:linear-gradient(to bottom,#f1f0f5 0%,rgba(241,240,245,0) 100%); border-bottom:0; backdrop-filter:none; -webkit-backdrop-filter:none; z-index:10; }
+.handwrite-screen[data-keyboard-open="true"] .handwrite-nav { position:fixed; top:0; }
 .handwrite-nav button,.handwrite-index { border:0; padding:0; background:transparent; appearance:none; cursor:pointer; color:#404040; }
-.handwrite-back { width:24px; height:24px; position:relative }
-.handwrite-back::before { content:""; position:absolute; left:6px; top:4px; width:12px; height:12px; border-left:2px solid #404040; border-bottom:2px solid #404040; transform:rotate(45deg) }
+.handwrite-back { width:24px; height:24px; position:relative; display:flex; align-items:center; justify-content:center; }
+.handwrite-back img { display:block; width:24px; height:24px; opacity:.58; filter:grayscale(1); pointer-events:none; user-select:none; }
 .handwrite-actions { position:absolute; right:14px; top:calc(50% - 18px); display:flex; align-items:flex-end; gap:13px; }
 .handwrite-actions button { width:24px; height:24px; flex:0 0 24px; }
 /* Keep the toolbar icons vector-like and transparent over the gray toolbar. */
@@ -459,42 +468,54 @@ body { background:rgb(242,241,246); overflow:hidden }
 .handwrite-more::before { content:"•••"; position:absolute; left:2px; top:2px; color:#444; font:700 12px/13px -apple-system,BlinkMacSystemFont,sans-serif; letter-spacing:1px; }
 .handwrite-index { position:absolute; left:24px; top:159px; width:15px; height:15px; z-index:2; }
 .paper-viewport { position:absolute; inset:0; padding-top:var(--handwrite-nav-height); box-sizing:border-box; overflow:auto; overflow-anchor:none; overscroll-behavior:contain; scrollbar-width:none; -webkit-overflow-scrolling:touch; background:#f1f0f5; touch-action:pan-x pan-y; }
+.handwrite-screen[data-keyboard-open="true"] .paper-viewport { background:#fff; }
 .paper-viewport::-webkit-scrollbar { display:none; }
-.paper-canvas { position:relative; width:794px; min-height:1123px; margin:0 auto; padding:14px 0 120px; background:#fff; box-shadow:0 2px 4px rgba(35,36,42,.16),0 5px 9px rgba(35,36,42,.07); transition:box-shadow 160ms ease; }
+.paper-stage { position:relative; width:794px; height:1123px; flex:none; margin:0 auto; transform-origin:top left; }
+.paper-canvas { position:absolute; inset:0 auto auto 0; width:794px; min-height:1123px; margin:0; padding:14px 0 120px; background:#fff; box-shadow:0 2px 4px rgba(35,36,42,.16),0 5px 9px rgba(35,36,42,.07); transform-origin:top left; transition:box-shadow 160ms ease; }
 .paper-canvas::before { display:none; }
 .paper-canvas.is-pulled { box-shadow:0 2px 4px rgba(35,36,42,.18),0 6px 10px rgba(35,36,42,.08); }
 .paper-canvas.is-pulled::before { display:none; }
-.paper-index { position:absolute; left:124px; top:56px; width:15px; height:15px; z-index:5; border:0; padding:0; background:transparent; appearance:none; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+.paper-index { position:absolute; left:126px; top:52px; width:15px; height:15px; z-index:5; border:0; padding:0; background:transparent; appearance:none; cursor:pointer; touch-action:manipulation; -webkit-tap-highlight-color:transparent; transition:left 180ms cubic-bezier(.22,.8,.25,1),top 180ms cubic-bezier(.22,.8,.25,1),opacity 180ms ease 55ms,transform 240ms cubic-bezier(.22,.8,.25,1),visibility 0s linear 260ms; will-change:left,top,opacity,transform; }
 .paper-index::before { content:""; position:absolute; left:-14px; top:-14px; width:43px; height:43px; border-radius:12px; }
-.paper-index img { display:block; width:100%; height:100%; pointer-events:none; user-select:none; }
-.heading-level-overlay { position:absolute; inset:0; z-index:24; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 150ms ease,visibility 0s 150ms; }
-.heading-level-overlay[data-open="true"] { opacity:1; visibility:visible; pointer-events:auto; transition:opacity 150ms ease,visibility 0s; }
-.heading-level-card { position:absolute; left:0; top:0; width:188px; padding:8px; box-sizing:border-box; border:1px solid #DFDFDF; border-radius:20px; background:#fff; box-shadow:0 4px 22px 0 rgba(147,147,147,.3); overflow:hidden; }
+.paper-index img { display:block; width:100%; height:100%; opacity:.68; filter:grayscale(1); pointer-events:none; user-select:none; }
+.paper-index[data-menu-open="true"] { opacity:0; visibility:hidden; pointer-events:none; transform:scale(.72); }
+.heading-level-overlay { position:absolute; inset:0; z-index:24; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 220ms ease,visibility 0s linear 260ms; }
+.heading-level-overlay[data-open="true"] { opacity:1; visibility:visible; pointer-events:auto; transition:opacity 220ms ease,visibility 0s linear 0s; }
+.heading-level-card { position:absolute; left:0; top:0; width:188px; padding:8px; box-sizing:border-box; border:1px solid #DFDFDF; border-radius:20px; background:#fff; box-shadow:0 4px 22px 0 rgba(147,147,147,.3); overflow:hidden; opacity:0; transform:translateY(-8px) scale(.92); transform-origin:top left; will-change:opacity,transform; transition:opacity 190ms ease,transform 260ms cubic-bezier(.16,1,.3,1); }
+.heading-level-overlay[data-open="true"] .heading-level-card { opacity:1; transform:translateY(0) scale(1); }
 .heading-level-card::before { display:none; }
 .heading-level-card-title { padding:7px 10px 8px; color:#999; font:13px/18px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
-.heading-level-option { position:relative; display:flex; align-items:center; width:100%; min-height:38px; padding:0 10px; border:0; border-radius:9px; background:transparent; color:#202020; text-align:left; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+.heading-level-option { position:relative; display:flex; align-items:center; width:100%; min-height:39px; padding:0 10px; border:0; border-radius:9px; background:transparent; color:#202020; text-align:left; cursor:pointer; -webkit-tap-highlight-color:transparent; }
 .heading-level-option:active { background:rgba(65,105,225,.08); }
 .heading-level-option[aria-checked="true"] { color:#4169e1; background:rgba(65,105,225,.07); }
 .heading-level-option .heading-level-preview { display:block; }
-.heading-level-option[data-level="title"] .heading-level-preview { font:700 21px/28px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
-.heading-level-option[data-level="subtitle"] .heading-level-preview { font:600 18px/25px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
-.heading-level-option[data-level="section"] .heading-level-preview { font:600 16px/22px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
-.heading-level-option[data-level="body"] .heading-level-preview { font:400 16px/22px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.heading-level-option[data-level="title"] .heading-level-preview { font:700 26px/39px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.heading-level-option[data-level="subtitle"] .heading-level-preview { font:600 22px/33px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.heading-level-option[data-level="section"] .heading-level-preview { font:600 18px/27px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
+.heading-level-option[data-level="body"] .heading-level-preview { font:400 16px/24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; }
 .heading-level-option .heading-level-check { margin-left:auto; color:#4169e1; font:600 16px/20px -apple-system,BlinkMacSystemFont,sans-serif; opacity:0; }
 .heading-level-option[aria-checked="true"] .heading-level-check { opacity:1; }
-.paper-editor { width:100%; min-height:975px; padding:34px 50px 0; outline:none; border:0; color:#202020; caret-color:#4169e1; font:18px/1.72 -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; white-space:pre-wrap; overflow-wrap:break-word; -webkit-user-select:text; user-select:text; }
-.paper-editor::first-line { font:600 calc(22em / 18)/1.4 "PingFang SC",sans-serif; }
-.paper-editor[data-heading-level="title"]::first-line { font:700 calc(30em / 18)/1.3 "PingFang SC",sans-serif; }
-.paper-editor[data-heading-level="subtitle"]::first-line { font:600 calc(24em / 18)/1.4 "PingFang SC",sans-serif; }
-.paper-editor[data-heading-level="section"]::first-line { font:600 calc(20em / 18)/1.5 "PingFang SC",sans-serif; }
-.paper-editor[data-heading-level="body"]::first-line { font:400 calc(18em / 18)/1.75 "PingFang SC",sans-serif; }
+.paper-editor { width:100%; min-height:975px; padding:34px 150px 0; outline:none; border:0; color:#202020; caret-color:#4169e1; font:400 16px/24px -apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif; white-space:pre-wrap; overflow-wrap:break-word; -webkit-user-select:text; user-select:text; }
+.paper-editor[data-heading-level="title"] { font:700 26px/39px "PingFang SC",sans-serif; }
+.paper-editor[data-heading-level="subtitle"] { font:600 22px/33px "PingFang SC",sans-serif; }
+.paper-editor[data-heading-level="section"] { font:600 18px/27px "PingFang SC",sans-serif; }
+.paper-editor[data-heading-level="body"] { font:400 16px/24px "PingFang SC",sans-serif; }
+.paper-editor > [data-paper-block],
+.paper-editor > div,
+.paper-editor > p { font:400 16px/24px "PingFang SC",sans-serif; }
+.paper-editor > [data-paper-level="title"] { font:700 26px/39px "PingFang SC",sans-serif; }
+.paper-editor > [data-paper-level="subtitle"] { font:600 22px/33px "PingFang SC",sans-serif; }
+.paper-editor > [data-paper-level="section"] { font:600 18px/27px "PingFang SC",sans-serif; }
+.paper-editor > [data-paper-level="body"] { font:400 16px/24px "PingFang SC",sans-serif; }
+.paper-editor > [data-paper-block].is-entering { animation:paper-line-enter 360ms cubic-bezier(.22,.8,.25,1) both; }
+@keyframes paper-line-enter { from { opacity:.72; transform:translateY(-5px); } to { opacity:1; transform:translateY(0); } }
 .paper-editor:empty::before { content:""; }
 .paper-editor::selection { background:rgba(65,105,225,.18); }
 .paper-editor:focus { outline:none; }
 .handwrite-caret { display:none; }
 @keyframes handwrite-caret-blink { 0%,49% { opacity:1; } 50%,100% { opacity:0; } }
 @media(prefers-reduced-motion:reduce) {
-  .notes-menu,.notes-menu *, .type-filter-overlay,.type-filter-overlay *, .handwrite-screen { transition:none !important }
+  .notes-menu,.notes-menu *, .type-filter-overlay,.type-filter-overlay *, .heading-level-overlay,.heading-level-overlay *, .paper-index,.more-notes-trigger,.handwrite-screen { transition:none !important }
   .handwrite-caret { animation:none !important; }
 }
 
@@ -1818,7 +1839,7 @@ body { background:rgb(242,241,246); overflow:hidden }
       <span class="handwrite-status-icons"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASQAAAAwCAYAAAC4yQfVAAAACXBIWXMAAAsSAAALEgHS3X78AAAFAElEQVR4nO2d0W3rMAxFOVpGyxpdwAv0t0AX6JeHCJAp8qDgqTBUWRYl2iKpewB+FC3SRDZPKEq26QUAAEqg0W8AXM/39/c77vf7b9xut3fEn+PfhJid5/P5Wtf1T3x9fU0XazIGYWxCSDGVkLZJNkvCRcEQUXcEYc0wZpGQcMuyIJbjMYiy6mUKIdUkZPgbD8TKJ8hDQkIlOUVBeQMiWrrE1FMxuRdSSJjaJLMsJakqqLd6sg5ktIhUhK1Sci8kTqUQ/tYao0XkSUwhifYSLNdDiv2TmWLN9NH2xqwF90LiJpQVtInIg5j2RASOyYmpZezsZGAj3oSkXURWxZRLKMnVoxlYM4sAXCnpz8BOvAjJmois9edQGZ0jJQjJoZCsy2hbLVnoHYVqqcR2/9Z2D5f3uG/2qNWOJbeXpDMDBbEupLNklDvR0uQ6S0zapnC1QvLyxUAnH0cIyaGQONsVauLom+3ovYSQlJSmKVzNNAMyomop9fTi9GRghtIGv9pmqUUhSZz8seI5Ayk5aZHSkZCkvxw8xS0zDU8XCFwIqfaEPzqprQmpV0ZXJ3lvsmroK0FI1HUM3QuJe5J7EpIVEUmKdHRP6SiBMF0j1vFzJyTudKB0QlsTEvfkHy2i3vevoUKCkKirQoKQHAuJk9S9MkpvQyJ1B4TaHpMGGdUI6ewLlWcT0s/Pz+vxeGSPhY4MTJi5QqqRUmsit9yKpOeq/jM+wxlASHSpkD4/P18fHx9vMaXoycANENJ+QnOrIun+B1dOuf+vSUYBCImGCCknJQhJaYWUS2iOjM5uxHLEtJ3CaZNRAEKiYUJKpaQvA1Eh/aG3ItEkJo1ASDRUSOHnU4W0d41P7W5hTNnaxvxKEWlf7eMAIdFQIYWITW4asX/o6OSFkGzJqKVa0gSERMOFFKdtokLiiETqdXIDsoU7uNbQuCRtTUoQEvkTEnd3dalKgpDqGC2e1uOrDQiJhgsp9pEgJMMVkpQ80l4fhISNkWS9h8StkErLv6iQzusdcRYXWq/q17i0XwIVEg2vkCCkncG1xpWXmVi6HIQDhET+lv1RIemUknQvp3ScLcooACHRUCFtr2v7FVLp/sC15T2mbLYvM+GQVktWZRSAkEjXpSM1Zf/RCQchjScex6tWuK7+f2cBIZGei2s5jdHSiQch2cba3iFJcD8kulxIORkFSOpR0xCSLbZT9PQYc1biPAAh0aVCKkHcf74HhGSDlvsheRfT0T21tVyaQ0oDQjoYkC1SwrWOtYcHXAmERF3nRgoqJAipiNRjfLxKqea5bKOrEJrlMUi9NoxgyqYXqSmH5aX9EnhQJDWfE7liAEJChXS6lLzKqFZIAfSSqKpi7nqUNiqkugrQA60J5VlGgTClqE2i9EktuY3EHuP+//MePRGZM5Y5IKSJhGT1uWlXkCbRXpUEyqTTtfAzBwhpMiFxpDSLjHLTNm4zFrxExlClkLjf4ugh8Tka45lkFEmTCZVSn4y41ZHoTu33iwlJhCukEpKfzxt74zzbOJSSKiZWiPD7GOGbf8ZYN2MQIp2i9ciIfS3b0Y5dyamA1N4Yyc/nkdz4zMyelBALawxap7vVV/vXboqrmQpI3a1Q6j1xXssj2/GZUco1K0WIpWoMWiujCOWWNNNoQeq1NL4nj2Ac/rI3HUEsp/Xb5q7PAagg1z+JfaXZYk16SHFspICQAAAvLfwDvZrD4Cgp/NAAAAAASUVORK5CYII=" alt="" draggable="false"></span>
     </div>
     <header class="handwrite-nav">
-      <button type="button" class="handwrite-back" aria-label="返回笔记列表"></button>
+      <button type="button" class="handwrite-back" aria-label="返回笔记列表"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDQ4IDQ4IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0zMSAzNkwxOSAyNEwzMSAxMiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjwvc3ZnPg==" alt="" draggable="false"></button>
       <div class="handwrite-actions">
         <button type="button" class="handwrite-ai" aria-label="AI助手"><img src="data:image/png;base64,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" alt="" draggable="false"></button>
         <button type="button" class="handwrite-share" aria-label="分享"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAABoklEQVR42u3cwY2FMAxFUUqjJDqiJEpilFmM0AhBcOzkGe7ircJH6HwDCSFM+75PxB4QAARwWtd1n+f5N8uy7ABWZtu2P7hjMiHK4WVDlMTLhCiLlwVRGi8DojyeOmIKPGXENHiqiKnwFBHT4akhDu/nWdqUEIfhlfHv1bal7ThGVkUchne3fWn7/6BBEXEYXi2gOuIwvCeAyojD8J4CqiIOw7MAKiIOw7MCqiGaf9iK1wKohBhWgXd4rYA1iDX7kLwG1uB5AF4h9sALuQvX4nkBniH2wnPvBz7B8wQ8IvbEcx+JeF5He0O8al4YQAABBBDAxIA1w6TaRAF6zauUtPxZYXAZAK0DgFPAqFm0LIB3x3oLWDML9nZASxUC2FiFQw/oE4ClMktpWxP5QNWaq7PNHdB6d1LuB171NgAEEEAAAQQQQAABBBBAAAEEEEAAAQRQLAACCCCAAAIIIIAAAggggAACCCCAAAIIIICSL1gqpusLll8LgJ0/aBa6yOZTgNGfq8sQy0xg+FKvLGle6nWsxKhFN6pwbosNzzDfHI8+5Q/JDQnAxCUvAgAAAABJRU5ErkJggg==" alt="" draggable="false"></button>
@@ -1826,7 +1847,9 @@ body { background:rgb(242,241,246); overflow:hidden }
       </div>
     </header>
     <div class="paper-viewport" aria-label="笔记纸张">
+      <div class="paper-stage">
       <div class="paper-canvas"><button type="button" class="paper-index" aria-label="目录"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAACXBIWXMAAAsSAAALEgHS3X78AAABN0lEQVRogeXaUarEIBBE0bs0l+SOXJJLqsEHAxJi0s7Hi6YO9Fd0sEOSwUJkBplBZpAZZAaZQWaQGWSGq4ulFKWU/irnPPXDtdYlKtxw3+xs023cce6TVbvGmV302V3rtetPN3hWtw1H7lb0ydii4TJY+I4Nl1LuGz57rPuJV9pNaWNXqam/pe/i3wKZQWaQGWQGmUFmkBlkBplBZpAZZIbIoLst4SszrRTYCx/nrlD1sObpAODOihFPiQQAkck7BHgpGvGMJu4Y8eQubbWIaUs00zoG8TMfre2C+LdCZpAZZAaZQWaQGWQGmUFmkBlkBpnhbsAoKnldw/UkqomeBGjj2nZyhSrRIw+jTbxdplU3jHhSJNP69WDaig1np0wrH6Kpy690Gzh6+XeFzCAzyAwyw9ML+G8fSc6oXFuYhvMAAAAASUVORK5CYII=" alt="" draggable="false"></button><div class="paper-editor" contenteditable="true" role="textbox" aria-multiline="true" aria-label="笔记内容" spellcheck="true" inputmode="text" enterkeyhint="next" autocapitalize="sentences" tabindex="0"></div></div>
+      </div>
     <div class="heading-level-overlay" data-open="false" aria-hidden="true">
       <div class="heading-level-card" role="dialog" aria-label="标题层级">
         <div class="heading-level-card-title">调整标题层级</div>
@@ -1839,6 +1862,7 @@ body { background:rgb(242,241,246); overflow:hidden }
     </div>`;
   app.append(handwriteScreen);
   const paperViewport=handwriteScreen.querySelector('.paper-viewport');
+  const paperStage=handwriteScreen.querySelector('.paper-stage');
   const paperCanvas=handwriteScreen.querySelector('.paper-canvas');
   const paperEditor=handwriteScreen.querySelector('.paper-editor');
   const paperIndex=paperCanvas.querySelector('.paper-index');
@@ -1847,15 +1871,98 @@ body { background:rgb(242,241,246); overflow:hidden }
   let headingMenuOpen=false;
   let headingLevel='title';
   let paperIndexTouchHandledUntil=0;
+  let lastPaperRange=null;
+  const paperBlockSelector='[data-paper-block],p,div';
+  const getPaperBlocks=()=>[...paperEditor.children].filter(node=>node.matches?.(paperBlockSelector));
+  const getActivePaperRange=()=>{
+    const selection=window.getSelection();
+    if(selection?.rangeCount&&paperEditor.contains(selection.anchorNode))return selection.getRangeAt(0);
+    return lastPaperRange&&paperEditor.contains(lastPaperRange.startContainer)?lastPaperRange:null;
+  };
+  const normalizePaperBlocks=()=>{
+    const blocks=getPaperBlocks();
+    if(!blocks.length)return blocks;
+    const editorLevel=paperEditor.dataset.headingLevel;
+    blocks.forEach((block,index)=>{
+      block.dataset.paperBlock='true';
+      if(!block.dataset.paperLevel)block.dataset.paperLevel=index===0&&editorLevel?editorLevel:'body';
+      block.dataset.paperHeading=String(block.dataset.paperLevel!=='body');
+    });
+    paperEditor.removeAttribute('data-heading-level');
+    return blocks;
+  };
+  const getPaperCaretBlock=()=>{
+    normalizePaperBlocks();
+    const range=getActivePaperRange();
+    if(range){
+      let node=range.startContainer;
+      if(node.nodeType===Node.TEXT_NODE)node=node.parentElement;
+      const block=node?.closest?.(paperBlockSelector);
+      if(block&&block!==paperEditor)return block;
+      return paperEditor;
+    }
+    return paperEditor.firstChild?.nodeType===Node.TEXT_NODE
+      ? paperEditor
+      : paperEditor.querySelector(paperBlockSelector)||paperEditor;
+  };
+  const getPaperSelectionBlocks=()=>{
+    const blocks=normalizePaperBlocks();
+    const range=getActivePaperRange();
+    if(!range)return [];
+    const selected=blocks.filter(block=>{
+      try{return range.intersectsNode(block)}catch{return false;}
+    });
+    return selected.length?selected:[getPaperCaretBlock()].filter(block=>block!==paperEditor);
+  };
+  const getPaperCaretLevel=()=>{
+    const block=getPaperCaretBlock();
+    return (block===paperEditor?paperEditor.dataset.headingLevel:block.dataset.paperLevel)||'body';
+  };
+  const syncHeadingOptions=level=>{
+    headingLevel=level;
+    headingOptions.forEach(option=>option.setAttribute('aria-checked',String(option.dataset.level===level)));
+  };
+  const positionPaperIndex=()=>{
+    const canvasRect=paperCanvas.getBoundingClientRect();
+    const editorRect=paperEditor.getBoundingClientRect();
+    const editorStyle=getComputedStyle(paperEditor);
+    const scale=canvasRect.width/(paperCanvas.offsetWidth||paperBase.width)||paperZoom||1;
+    const indexWidth=paperIndex.offsetWidth||15;
+    const indexHeight=paperIndex.offsetHeight||15;
+    const textLeft=(editorRect.left-canvasRect.left)/scale+parseFloat(editorStyle.paddingLeft||'0');
+    const block=getPaperCaretBlock();
+    const textWalker=document.createTreeWalker(block,NodeFilter.SHOW_TEXT);
+    let textNode=textWalker.nextNode();
+    while(textNode&&!textNode.length)textNode=textWalker.nextNode();
+    let firstLineRect;
+    if(textNode&&(block!==paperEditor||textNode.parentElement.closest('div,p')===paperEditor)){
+      const firstLine=document.createRange();
+      firstLine.setStart(textNode,0);
+      firstLine.setEnd(textNode,1);
+      firstLineRect=firstLine.getClientRects()[0];
+    }
+    let lineCenter;
+    if(firstLineRect?.height){
+      lineCenter=(firstLineRect.top+firstLineRect.height/2-canvasRect.top)/scale;
+    }else{
+      const blockStyle=block===paperEditor?editorStyle:getComputedStyle(block);
+      const blockTop=block===paperEditor
+        ? (editorRect.top-canvasRect.top)/scale+parseFloat(editorStyle.paddingTop)
+        : (block.getBoundingClientRect().top-canvasRect.top)/scale;
+      lineCenter=blockTop+parseFloat(blockStyle.lineHeight)/2;
+    }
+    const left=textLeft-indexWidth-9;
+    const top=lineCenter-indexHeight/2;
+    paperIndex.style.left=`${Math.max(0,left)}px`;
+    paperIndex.style.top=`${Math.max(0,top)}px`;
+  };
   const positionHeadingMenu=()=>{
     if(!headingMenuOpen)return;
-    const anchor=paperIndex.getBoundingClientRect();
-    const overlayBounds=headingOverlay.getBoundingClientRect();
     const card=headingOverlay.querySelector('.heading-level-card');
-    // Keep the popover anchored to the icon itself: its top-left corner
-    // covers the icon top-left corner as the paper moves or zooms.
-    const left=anchor.left-overlayBounds.left;
-    const top=anchor.top-overlayBounds.top;
+    // The overlay scrolls together with the paper. Keep the card in the
+    // paper's content coordinates so the scroll offset is applied only once.
+    const left=paperStage.offsetLeft+paperIndex.offsetLeft*paperZoom;
+    const top=paperStage.offsetTop+paperIndex.offsetTop*paperZoom;
     card.style.left=`${left}px`;
     card.style.top=`${top}px`;
   };
@@ -1863,25 +1970,43 @@ body { background:rgb(242,241,246); overflow:hidden }
     headingMenuOpen=next;
     headingOverlay.dataset.open=String(next);
     headingOverlay.setAttribute('aria-hidden',String(!next));
+    paperIndex.dataset.menuOpen=String(next);
     if(next)requestAnimationFrame(positionHeadingMenu);
   };
-  const setHeadingLevel=level=>{
+  const setHeadingLevel=(level,{focus=true}={})=>{
     headingLevel=level;
-    paperEditor.dataset.headingLevel=level;
-    headingOptions.forEach(option=>option.setAttribute('aria-checked',String(option.dataset.level===level)));
-    if(currentDraftCard)currentDraftCard.dataset.headingLevel=level;
+    const selectedBlocks=getPaperSelectionBlocks();
+    const block=selectedBlocks[0]||getPaperCaretBlock();
+    if(selectedBlocks.length){
+      selectedBlocks.forEach(selectedBlock=>{
+        selectedBlock.dataset.paperLevel=level;
+        selectedBlock.dataset.paperHeading=String(level!=='body');
+      });
+      paperEditor.removeAttribute('data-heading-level');
+    }else if(block&&block!==paperEditor){
+      block.dataset.paperLevel=level;
+      block.dataset.paperHeading=String(level!=='body');
+      paperEditor.removeAttribute('data-heading-level');
+    }else{
+      // A brand-new empty note has no block element until the first line break.
+      paperEditor.dataset.headingLevel=level;
+    }
+    syncHeadingOptions(level);
     setHeadingMenu(false);
-    paperEditor.focus({preventScroll:true});
+    requestAnimationFrame(positionPaperIndex);
+    if(focus)paperEditor.focus({preventScroll:true});
   };
   paperIndex.addEventListener('click',event=>{
     event.preventDefault();event.stopPropagation();
     if(Date.now()<paperIndexTouchHandledUntil)return;
+    if(!headingMenuOpen)syncHeadingOptions(getPaperCaretLevel());
     setHeadingMenu(!headingMenuOpen);
   });
   paperIndex.addEventListener('touchend',event=>{
     event.preventDefault();
     event.stopPropagation();
     paperIndexTouchHandledUntil=Date.now()+500;
+    if(!headingMenuOpen)syncHeadingOptions(getPaperCaretLevel());
     setHeadingMenu(!headingMenuOpen);
   },{passive:false});
   headingOptions.forEach(option=>option.addEventListener('click',()=>setHeadingLevel(option.dataset.level)));
@@ -1889,8 +2014,22 @@ body { background:rgb(242,241,246); overflow:hidden }
     if(event.target===headingOverlay)setHeadingMenu(false);
   });
   paperViewport.addEventListener('scroll',positionHeadingMenu,{passive:true});
-  window.addEventListener('resize',positionHeadingMenu,{passive:true});
-  const paperBase={width:794,height:1123,textMargin:50,paddingTop:14,paddingBottom:120,editorHeight:975,fontSize:18};
+  paperEditor.addEventListener('focusin',positionPaperIndex);
+  paperEditor.addEventListener('click',positionPaperIndex);
+  paperEditor.addEventListener('keyup',positionPaperIndex);
+  paperEditor.addEventListener('input',positionPaperIndex);
+  document.addEventListener('selectionchange',()=>{
+    const selection=window.getSelection();
+    if(selection?.rangeCount&&paperEditor.contains(selection.anchorNode)){
+      lastPaperRange=selection.getRangeAt(0).cloneRange();
+      positionPaperIndex();
+    }
+  });
+  window.addEventListener('resize',()=>{
+    positionPaperIndex();
+    positionHeadingMenu();
+  },{passive:true});
+  const paperBase={width:794,height:1123,textMargin:150,newNoteCaretOffset:56,paddingTop:14,paddingBottom:120,editorHeight:975,fontSize:16};
   let currentDraftCard=null;
   let currentDraftText='';
   const localDateParts=date=>{
@@ -1902,6 +2041,40 @@ body { background:rgb(242,241,246); overflow:hidden }
     };
   };
   const readDraft=()=>String(paperEditor.innerText||paperEditor.textContent||'').replace(/\u00a0/g,' ').replace(/\r/g,'').trim();
+  const setPaperEditorText=text=>{
+    const lines=String(text||'').replace(/\r/g,'').split('\n');
+    paperEditor.replaceChildren();
+    if(lines.length===1){
+      paperEditor.append(document.createTextNode(lines[0]||''));
+      paperEditor.dataset.headingLevel='title';
+      requestAnimationFrame(positionPaperIndex);
+      return;
+    }
+    paperEditor.removeAttribute('data-heading-level');
+    lines.forEach((line,index)=>{
+      const block=document.createElement('div');
+      block.textContent=line;
+      block.dataset.paperHeading=index===0?'true':'false';
+      block.dataset.paperBlock='true';
+      block.dataset.paperLevel=index===0?'title':'body';
+      paperEditor.append(block);
+    });
+    requestAnimationFrame(positionPaperIndex);
+  };
+  paperEditor.addEventListener('keydown',event=>{
+    if(event.key!=='Enter')return;
+    const before=new Set(getPaperBlocks());
+    requestAnimationFrame(()=>{
+      const blocks=normalizePaperBlocks();
+      blocks.forEach(block=>{
+        if(!before.has(block)){
+          block.classList.add('is-entering');
+          block.addEventListener('animationend',()=>block.classList.remove('is-entering'),{once:true});
+        }
+      });
+      requestAnimationFrame(positionPaperIndex);
+    });
+  });
   const draftParts=text=>{
     const lines=text.split('\n').map(line=>line.trim()).filter(Boolean);
     const title=(lines.shift()||'未命名笔记').slice(0,80);
@@ -2039,12 +2212,15 @@ body { background:rgb(242,241,246); overflow:hidden }
   };
   let paperZoom=1;
   let paperFitted=false;
+  let paperEditing=false;
   let gestureStartZoom=1;
   let paperZoomAnimationFrame=0;
-  const layoutPaperEditor=(zoom,scale)=>{
-    // Keep the requested edge spacing at the default zoom in the scaled demo frame.
-    paperEditor.style.paddingInline=(paperBase.textMargin*zoom/scale)+'px';
-    paperEditor.style.maxWidth=(paperViewport.clientWidth*Math.max(1,zoom))+'px';
+  const layoutPaperEditor=zoom=>{
+    // Keep the editor in the paper's unscaled coordinate system. The stage
+    // transform below scales the paper and its text as one surface.
+    paperEditor.style.width=paperBase.width+'px';
+    paperEditor.style.paddingInline=paperBase.textMargin+'px';
+    paperEditor.style.maxWidth='none';
   };
   const setPaperZoom=(next,clientX,clientY)=>{
     const width=paperViewport.clientWidth;
@@ -2053,44 +2229,43 @@ body { background:rgb(242,241,246); overflow:hidden }
     const sideGap=Math.min(20,width*.08);
     const topGap=Math.min(38,height*.12);
     const bottomGap=Math.min(16,height*.06);
-    const paperHeight=Math.max(paperBase.height,parseFloat(getComputedStyle(paperCanvas).height)/paperZoom);
+    const paperHeight=Math.max(paperBase.height,paperCanvas.scrollHeight);
     const fillWidthZoom=width/paperBase.width;
     // The temporary pinch state may shrink only until the paper width fits.
     // This keeps the top, left, and right edges visible and prevents a smaller page.
     const minZoom=Math.min(1,(width-2*sideGap)/paperBase.width);
     const zoom=Math.max(minZoom,Math.min(2.2,next));
     paperFitted=next<=minZoom;
-    const bounds=paperViewport.getBoundingClientRect();
-    const scaleX=bounds.width/width||1;
-    layoutPaperEditor(zoom,scaleX);
+    layoutPaperEditor(zoom);
     const reveal=Math.max(0,(fillWidthZoom-zoom)/(fillWidthZoom-minZoom));
     const top=topGap*reveal;
-    if(zoom===paperZoom&&paperCanvas.style.marginTop===top+'px'&&!paperFitted)return;
+    if(zoom===paperZoom&&paperStage.style.marginTop===top+'px'&&!paperFitted)return;
+    const bounds=paperViewport.getBoundingClientRect();
+    const scaleX=bounds.width/width||1;
     const scaleY=bounds.height/height||1;
     const anchorX=clientX==null?width/2:(clientX-bounds.left)/scaleX;
     const anchorY=clientY==null?height/2:(clientY-bounds.top)/scaleY;
     const ratio=zoom/paperZoom;
-    const beforeX=paperViewport.scrollLeft+anchorX-paperCanvas.offsetLeft;
-    const beforeY=paperViewport.scrollTop+anchorY-paperCanvas.offsetTop;
+    const beforeX=paperViewport.scrollLeft+anchorX-paperStage.offsetLeft;
+    const beforeY=paperViewport.scrollTop+anchorY-paperStage.offsetTop;
     paperZoom=zoom;
-    paperCanvas.style.width=(paperBase.width*zoom)+'px';
-    paperCanvas.style.minHeight=(paperBase.height*zoom)+'px';
-    paperCanvas.style.marginTop=top+'px';
-    paperCanvas.style.padding=`${paperBase.paddingTop*zoom}px 0 ${paperBase.paddingBottom*zoom}px`;
-    paperIndex.style.width=(15*zoom)+'px';
-    paperIndex.style.height=(15*zoom)+'px';
-    paperIndex.style.left=(24*zoom)+'px';
-    paperIndex.style.top=(56*zoom)+'px';
-    paperEditor.style.minHeight=(paperBase.editorHeight*zoom)+'px';
-    paperEditor.style.paddingTop=(34*zoom)+'px';
-    paperEditor.style.fontSize=(paperBase.fontSize*zoom)+'px';
+    paperStage.style.width=(paperBase.width*zoom)+'px';
+    paperStage.style.height=(paperHeight*zoom)+'px';
+    paperStage.style.marginTop=top+'px';
+    paperCanvas.style.width=paperBase.width+'px';
+    paperCanvas.style.minHeight=paperBase.height+'px';
+    paperCanvas.style.padding=`${paperBase.paddingTop}px 0 ${paperBase.paddingBottom}px`;
+    paperCanvas.style.transform=`scale(${zoom})`;
+    paperEditor.style.minHeight=paperBase.editorHeight+'px';
+    paperEditor.style.paddingTop='34px';
+    requestAnimationFrame(positionPaperIndex);
     if(headingMenuOpen)requestAnimationFrame(positionHeadingMenu);
     if(paperFitted){
       paperViewport.scrollLeft=0;
       paperViewport.scrollTop=0;
     }else{
-      paperViewport.scrollLeft=paperCanvas.offsetLeft+beforeX*ratio-anchorX;
-      paperViewport.scrollTop=paperCanvas.offsetTop+beforeY*ratio-anchorY;
+      paperViewport.scrollLeft=paperStage.offsetLeft+beforeX*ratio-anchorX;
+      paperViewport.scrollTop=paperStage.offsetTop+beforeY*ratio-anchorY;
     }
   };
   const getPaperFitZoom=()=>{
@@ -2100,7 +2275,7 @@ body { background:rgb(242,241,246); overflow:hidden }
     const sideGap=Math.min(20,width*.08);
     const topGap=Math.min(38,height*.12);
     const bottomGap=Math.min(16,height*.06);
-    const paperHeight=Math.max(paperBase.height,parseFloat(getComputedStyle(paperCanvas).height)/Math.max(paperZoom,.0001));
+    const paperHeight=Math.max(paperBase.height,paperCanvas.scrollHeight);
     return Math.min((width-2*sideGap)/paperBase.width,(height-topGap-bottomGap)/paperHeight);
   };
   const getPaperWidthFitZoom=()=>{
@@ -2108,13 +2283,15 @@ body { background:rgb(242,241,246); overflow:hidden }
     if(!width)return .42;
     return Math.min(2.2,width/paperBase.width);
   };
-  const animatePaperZoom=(from,to,duration,onDone,anchorX,anchorY)=>{
+  const animatePaperZoom=(from,to,duration,onDone,anchorX,anchorY,onFrame)=>{
     cancelAnimationFrame(paperZoomAnimationFrame);
     const started=performance.now();
     const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
     const step=now=>{
       const progress=Math.min(1,(now-started)/duration);
-      setPaperZoom(from+(to-from)*ease(progress),anchorX,anchorY);
+      const easedProgress=ease(progress);
+      setPaperZoom(from+(to-from)*easedProgress,anchorX,anchorY);
+      if(onFrame)onFrame(easedProgress);
       if(progress<1){
         paperZoomAnimationFrame=requestAnimationFrame(step);
       }else{
@@ -2260,6 +2437,28 @@ body { background:rgb(242,241,246); overflow:hidden }
   };
   paperViewport.addEventListener('touchend',returnPaper,{passive:true});
   paperViewport.addEventListener('touchcancel',event=>{ if(pinchActive) snapPaperToNormal(); returnPaper(event); },{passive:true});
+  let caretScrollFrame=0;
+  const scrollPaperToCaret=(left,top)=>{
+    if(left===paperViewport.scrollLeft&&top===paperViewport.scrollTop)return;
+    cancelAnimationFrame(caretScrollFrame);
+    const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reducedMotion){ paperViewport.scrollTo({left,top,behavior:'auto'}); return; }
+    const fromLeft=paperViewport.scrollLeft;
+    const fromTop=paperViewport.scrollTop;
+    const deltaLeft=left-fromLeft;
+    const deltaTop=top-fromTop;
+    const started=performance.now();
+    const duration=360;
+    const step=now=>{
+      const progress=Math.min(1,(now-started)/duration);
+      const eased=1-Math.pow(1-progress,3);
+      const drag=Math.sin(progress*Math.PI)*0.035;
+      paperViewport.scrollLeft=fromLeft+deltaLeft*(eased+drag);
+      paperViewport.scrollTop=fromTop+deltaTop*(eased+drag);
+      if(progress<1)caretScrollFrame=requestAnimationFrame(step);
+    };
+    caretScrollFrame=requestAnimationFrame(step);
+  };
   const keepPaperCaretVisible=()=>{
     const selection=window.getSelection();
     if(!selection||!selection.rangeCount||!paperEditor.contains(selection.anchorNode))return;
@@ -2268,11 +2467,35 @@ body { background:rgb(242,241,246); overflow:hidden }
     const rect=caret.getBoundingClientRect();
     const bounds=paperViewport.getBoundingClientRect();
     const inset=24;
-    if(rect.right>bounds.right-inset)paperViewport.scrollLeft+=rect.right-(bounds.right-inset);
-    if(rect.left<bounds.left+inset)paperViewport.scrollLeft-=bounds.left+inset-rect.left;
-    if(rect.bottom>bounds.bottom-inset)paperViewport.scrollTop+=rect.bottom-(bounds.bottom-inset);
-    if(rect.top<bounds.top+inset)paperViewport.scrollTop-=bounds.top+inset-rect.top;
+    let left=paperViewport.scrollLeft;
+    let top=paperViewport.scrollTop;
+    if(rect.right>bounds.right-inset)left+=rect.right-(bounds.right-inset);
+    if(rect.left<bounds.left+inset)left-=bounds.left+inset-rect.left;
+    if(rect.bottom>bounds.bottom-inset)top+=rect.bottom-(bounds.bottom-inset);
+    if(rect.top<bounds.top+inset)top-=bounds.top+inset-rect.top;
+    scrollPaperToCaret(left,top);
   };
+  const enterPaperEditMode=event=>{
+    if(!currentDraftCard||paperEditing||app.dataset.handwriteOpen!=='true')return;
+    paperEditing=true;
+    cancelPaperZoomAnimation();
+    const from=paperZoom;
+    const anchorX=event?.clientX;
+    const anchorY=event?.clientY;
+    if(Math.abs(from-1)<.01){
+      paperEditor.focus({preventScroll:true});
+      keepPaperCaretVisible();
+      return;
+    }
+    // Existing notes open in the full-sheet overview. The first click on the
+    // writing area switches to the normal editing scale while keeping the
+    // clicked point under the pointer.
+    setPaperZoom(1,anchorX,anchorY);
+    paperEditor.focus({preventScroll:true});
+    keepPaperCaretVisible();
+  };
+  paperEditor.addEventListener('pointerdown',enterPaperEditMode);
+  paperEditor.addEventListener('focusin',enterPaperEditMode);
   paperEditor.addEventListener('input',()=>{
     const text=readDraft();
     if(text)updateDraftCard(text);
@@ -2287,31 +2510,40 @@ body { background:rgb(242,241,246); overflow:hidden }
     if(next){
       // 新建从空白纸开始；点击已有卡片时加载对应笔记内容。
       const noteText=noteCard?noteBodyForCard(noteCard):'';
-      paperEditor.textContent=noteText;
+      setPaperEditorText(noteText);
       currentDraftCard=noteCard||null;
       currentDraftText=noteText;
-      setHeadingLevel(noteCard?.dataset.headingLevel||'title');
+      paperEditing=!noteCard;
+      if(noteCard)syncHeadingOptions(getPaperCaretLevel());
+      else setHeadingLevel('title',{focus:true});
       setHeadingMenu(false);
       setFilter(false);setSort(false);setOpen(false);
       noteList.scrollTop=0;
-      paperEditor.focus({preventScroll:true});
-      // Show the full sheet first, then zoom once into the existing writing area.
       cancelPaperZoomAnimation();
       const fitZoom=getPaperFitZoom();
-      setPaperZoom(fitZoom);
+      // Existing notes open at 120% of the fit-to-screen size.
+      const defaultZoom=noteCard?Math.min(2.2,fitZoom*1.2):fitZoom;
+      setPaperZoom(defaultZoom);
       paperViewport.scrollLeft=0;
       paperViewport.scrollTop=0;
       paperCanvas.classList.remove('is-pulled');
-      const viewportBounds=paperViewport.getBoundingClientRect();
-      const zoomAnchorX=viewportBounds.left+1;
-      const zoomAnchorY=viewportBounds.top+1;
-      animatePaperZoom(fitZoom,1,360,()=>{
-        setPaperZoom(1);
-        paperViewport.scrollLeft=0;
-        paperViewport.scrollTop=0;
-        paperCanvas.classList.remove('is-pulled');
-        keepPaperCaretVisible();
-      },zoomAnchorX,zoomAnchorY);
+      if(!noteCard){
+        const viewportBounds=paperViewport.getBoundingClientRect();
+        const zoomAnchorX=viewportBounds.left+1;
+        const zoomAnchorY=viewportBounds.top+1;
+        const startScrollLeft=paperViewport.scrollLeft;
+        const targetScrollLeft=Math.max(0,paperBase.textMargin-paperBase.newNoteCaretOffset);
+        animatePaperZoom(fitZoom,1,360,()=>{
+          // The horizontal pan is animated with the zoom, so the caret does
+          // not jump after the paper reaches its final scale.
+          paperViewport.scrollLeft=targetScrollLeft;
+          paperViewport.scrollTop=0;
+          paperCanvas.classList.remove('is-pulled');
+          keepPaperCaretVisible();
+        },zoomAnchorX,zoomAnchorY,progress=>{
+          paperViewport.scrollLeft=startScrollLeft+(targetScrollLeft-startScrollLeft)*progress;
+        });
+      }
     } else {
       setHeadingMenu(false);
       cancelPaperZoomAnimation();
@@ -2495,7 +2727,7 @@ body { background:rgb(242,241,246); overflow:hidden }
     if(next&&focus)mainItems[0].focus({preventScroll:true});
     if(!next){resetTimer=setTimeout(()=>setSort(false),230);if(restore)trigger.focus({preventScroll:true})}
   }
-  trigger.addEventListener('click',()=>setOpen(!isOpen));
+  trigger.addEventListener('click',()=>setOpen(!isOpen,{focus:!isOpen}));
   trigger.addEventListener('keydown',e=>{
     if(e.key==='ArrowDown'){e.preventDefault();e.stopPropagation();setOpen(true,{focus:true})}
   });
@@ -2619,21 +2851,25 @@ body { background:rgb(242,241,246); overflow:hidden }
     const viewport=window.visualViewport;
     const viewportWidth=viewport?.width||innerWidth;
     const viewportHeight=viewport?.height||innerHeight;
+    const keyboardOpen=Boolean(viewport&&viewport.height<innerHeight-120&&app.dataset.handwriteOpen==='true');
     const scale=Math.max(viewportWidth/375,viewportHeight/812);
     const height=Math.min(812,Math.max(1,viewportHeight/scale));
     const stage=document.querySelector('.demo-stage');
     if(stage)stage.style.height=viewportHeight+'px';
-    app.style.height=height+'px';app.style.transform='scale('+scale+')';
-    device.style.width=(375*scale)+'px';device.style.height=(height*scale)+'px';
+    const layoutHeight=keyboardOpen?812:height;
+    app.style.height=layoutHeight+'px';app.style.transform='scale('+scale+')';
+    handwriteScreen.dataset.keyboardOpen=String(keyboardOpen);
+    device.style.width=(375*scale)+'px';device.style.height=(layoutHeight*scale)+'px';
     // Keep the editor within the visible part of the demo when its frame is cropped.
     handwriteScreen.style.insetInline=(Math.max(0,375-viewportWidth/scale)/2)+'px';
     handwriteScreen.style.bottom='0px';
     if(paperFitted)setPaperZoom(0);
-    else layoutPaperEditor(paperZoom,scale);
+    else layoutPaperEditor(paperZoom);
     const tabs=app.querySelector('.n1-tabs-1');
     const tabsHeight=tabs ? tabs.offsetHeight : 48;
-    const add=app.querySelector('[data-name="添加"]');add.style.top=(height-tabsHeight-79)+'px';add.style.bottom='auto';
-    const edge=app.querySelector('[data-name="矩形 817"]');edge.style.top='auto';edge.style.bottom=tabsHeight+'px';
+    const bottomGap=20;
+    const add=app.querySelector('[data-name="添加"]');add.style.top=(height-tabsHeight-bottomGap-79)+'px';add.style.bottom='auto';
+    const edge=app.querySelector('[data-name="矩形 817"]');edge.style.top='auto';edge.style.bottom=(tabsHeight+bottomGap)+'px';
   }
   addEventListener('resize',fit,{passive:true});
   window.visualViewport?.addEventListener('resize',fit,{passive:true});
@@ -2644,12 +2880,20 @@ body { background:rgb(242,241,246); overflow:hidden }
 <script>
 (()=>{
  const app=document.getElementById('note-1');
+ const navigation=app.querySelector('.n1-navigation-1');
  const original=app.querySelector('.n1-navigation-1 > img.n1-icon-2');
  if(!original)throw Error('Home sidebar trigger icon is missing.');
  const trigger=document.createElement('button');
  trigger.type='button';trigger.id='home-sidebar-trigger';trigger.className='home-sidebar-trigger';
  trigger.setAttribute('aria-label','打开首页侧栏');trigger.setAttribute('aria-expanded','false');trigger.setAttribute('aria-controls','home-sidebar');trigger.setAttribute('aria-haspopup','dialog');
  original.replaceWith(trigger);trigger.append(original);
+ const title=navigation.querySelector('.all-notes-title');
+ if(title){
+  const titleGroup=document.createElement('div');
+  titleGroup.className='home-nav-title-group';
+  navigation.insertBefore(titleGroup,trigger);
+  titleGroup.append(trigger,title);
+ }
  const layer=document.getElementById('home-sidebar');
  const panel=layer.querySelector('.home-sidebar-panel');
  const allNotes=layer.querySelector('.home-sidebar-all');
